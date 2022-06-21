@@ -1,20 +1,52 @@
 # HSCP code
 
-The task is to compile/build the code using the command line:
+From the original code:
 <br>
-scram b -j 16
+Changes on the file DataFormats/MuonDetId/interface/RPCDetId.h
 <br>
-Initially, the build was failing due to a problem in the file HSCPAnalysis/muSimHits/plugins/muSimHits.cc, the main problem was the package to use the following line:
+Add
 <br>
-rollId.station
+bool isIRPC() const{
 <br>
-For this reason, the Roumyana solution was to update the package MuonDetId on the DataFormats. Now, the command still fails.  Roumyana believes that the code needs to be updated to the CMSSW_12_0_2 version, particularly the geometry and she sent the following links
+     return ((this->region() !=0) && ((this->station() ==3) || (this->station() ==4)) && (this->ring() == 1));
+     <br>
+     }
 <br>
-https://github.com/cms-sw/cmssw/issues/31061
+Changes on the file HSCPAnalysis/muSimHits/plugins/muSimHits.cc
 <br>
-https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookTroubleShooting#Error_undefined_reference
+      DETId detId = DetId(simHitRPC.detUnitId());
+      <br>
+      if(detId.subdetId() == MuonSubdetId::RPC)
+      <br>
+      {
+      <br>
+        RPCDetId rollId(detId);
+        <br>
+        cout << simHitRPC.particleType() << endl;
+        <br>
+        cout << rollId.station() << endl;
+        <br>
+        cout << "is iRPC: " << rollId.isIRPC();
+        <br>
+        //cout << rollId.station() << endl;
+        <br>
+        //cout << "is iRPC: " << roll->isIRPC();
+        <br>
+        
+        DTLayerId layerId(detId);
+        <br>
+        cout << "DT: " << layerId.station() <<endl;
+        <br>
+        //cout << "DT: " << dtLayerId.station() <<endl;
+        <br>
+To solve the problems:
 <br>
-The idea would be related to migrating ED modules to use esConsumes, with respect to Geometry in particular MuonGeometryRecord, since the error says that the reference is not defined, at least that's what I understand. I tried to update the "Geometry/Records" package, but it didn’t work. I guess it is something related to data access, but I don’t know how to apply the idea. 
+undefined reference to char const* edm::typelookup::className<MuonGeometryRecord>()
 <br>
-https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideHowToGetDataFromES#Registering_for_data_access
+undefined reference to `std::type_info const& edm::typelookup::classTypeInfo<MuonGeometryRecord>()'
 <br>
+Changes on the file HSCPAnalysis/HSCPRecHits/plugins/BuildFile.xml
+  <br>
+  Add the code line:
+  <br>
+  <use name="Geometry/Records"/>
