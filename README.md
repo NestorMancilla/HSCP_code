@@ -14,6 +14,7 @@ bool isIRPC() const{
 <br>
 Changes on the file HSCPAnalysis/muSimHits/plugins/muSimHits.cc
 <br>
+      
       DETId detId = DetId(simHitRPC.detUnitId());
       <br>
       if(detId.subdetId() == MuonSubdetId::RPC)
@@ -49,4 +50,4 @@ Changes on the file HSCPAnalysis/HSCPRecHits/plugins/BuildFile.xml
   <br>
   Add the code line:
   <br>
-  <use name="Geometry/Records"/>
+  use name="Geometry/Records"/
