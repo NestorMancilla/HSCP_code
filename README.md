@@ -6,8 +6,10 @@ Changes on the file DataFormats/MuonDetId/interface/RPCDetId.h
 <br>
 Add
 <br>
-bool isIRPC() const{
-<br>
+
+
+
+     bool isIRPC() const{
      return ((this->region() !=0) && ((this->station() ==3) || (this->station() ==4)) && (this->ring() == 1));
      <br>
      }
@@ -49,5 +51,8 @@ undefined reference to `std::type_info const& edm::typelookup::classTypeInfo<Muo
 Changes on the file HSCPAnalysis/HSCPRecHits/plugins/BuildFile.xml
   <br>
   Add the code line:
-  <br>
-  use name="Geometry/Records"/
+     <br>
+     
+     
+     
+     use name="Geometry/Records"/
