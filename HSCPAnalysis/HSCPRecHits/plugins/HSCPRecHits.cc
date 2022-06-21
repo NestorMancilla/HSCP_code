@@ -31,7 +31,6 @@
 #include <Geometry/RPCGeometry/interface/RPCRoll.h>
 #include <Geometry/RPCGeometry/interface/RPCGeometry.h>
 #include "Geometry/CommonTopologies/interface/TrapezoidalStripTopology.h"
-//#include "Geometry/Records/interface/MuonGeometryRecord.h"
 #include <Geometry/Records/interface/MuonGeometryRecord.h>
 #include <Geometry/CommonDetUnit/interface/GeomDet.h>
 #include "DataFormats/RPCDigi/interface/RPCDigiCollection.h"

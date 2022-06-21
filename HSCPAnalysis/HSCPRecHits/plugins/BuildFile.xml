@@ -15,4 +15,12 @@
 <use name="CommonTools/UtilAlgos"/>
 <use name="DataFormats/RPCDigi"/>
 <use name="Geometry/RPCGeometry"/>
+<!-- #################################### -->
+<!--To fix the following problems to build the source code (scram b): -->
+<!--undefined reference to `std::type_info const& edm::typelookup::classTypeInfo<MuonGeometryRecord>()' -->
+<!--undefined reference to `char const* edm::typelookup::className<MuonGeometryRecord>()' -->
+<!-- June 17, 2022-->
+<!-- Add the code line -->
+<use name="Geometry/Records"/>
+<!-- #################################### -->
 <flags EDM_PLUGIN="1"/>

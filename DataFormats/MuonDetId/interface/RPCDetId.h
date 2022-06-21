@@ -37,13 +37,15 @@ public:
       return this->station() < r.station();
     }
   }
-
-// To Fix the error
+// To fix the code Nestor-Roumyana 2022
 bool isIRPC() const{
      return ((this->region() !=0) && ((this->station() ==3) || (this->station() ==4)) && (this->ring() == 1));
      }
 //
 //
+//
+
+
 
 
   void buildfromDB(int region,

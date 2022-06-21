@@ -152,9 +152,8 @@ muSimHits::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
         RPCDetId rollId(detId);
         cout << simHitRPC.particleType() << endl;
         cout << rollId.station() << endl;
-        cout << "is iRPC: " << rollId.isIRPC();
-        //cout << rollId.station() << endl;
         //cout << "is iRPC: " << roll->isIRPC();
+        cout << "is iRPC: " << rollId.isIRPC();
       }
     }
   }
@@ -171,7 +170,7 @@ muSimHits::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       {
         DTLayerId layerId(detId);
         cout << "DT: " << layerId.station() <<endl;
-        //cout << "DT: " << dtLayerId.station() <<endl;
+       // cout << "DT: " << dtLayerId.station() <<endl;
       }
     }
   }
